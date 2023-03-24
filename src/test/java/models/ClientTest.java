@@ -30,6 +30,17 @@ public class ClientTest {
         Client client = setupClient();
         assertEquals("0717553340", client.getTel());
     }
+    @Test
+    public void getCarReturnsCarCorrectly() throws Exception{
+        Client client = setupClient();
+        assertEquals("bmw", client.getCar());
+    }
+    @Test
+    public void getServiceIdReturnsCorrectly() throws Exception{
+        Client client = setupClient();
+        assertEquals(1, client.getServiceId());
+    }
+    @Test
     //HELPER
     public Client setupClient()throws Exception{
         return new Client("gathoni","titoyut56@gmail.com","0717553340","bmw",1);

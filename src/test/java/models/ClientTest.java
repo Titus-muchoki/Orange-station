@@ -41,6 +41,35 @@ public class ClientTest {
         assertEquals(1, client.getServiceId());
     }
     @Test
+    public void setNameSetNameCorrectly() throws Exception{
+        Client client = setupClient();
+        client.setName("tito");
+        assertEquals("tito", client.getName());
+    }
+    @Test
+    public void setEmailSetsCorrectly() throws Exception{
+        Client client = setupClient();
+        client.setEmail("wambuchiri12@gmail.com");
+        assertEquals("wambuchiri12@gmail.com", client.getEmail());
+    }
+    @Test
+    public void setTelSetsTelCorrectly() throws Exception{
+        Client client = setupClient();
+        client.setTel("0776509158");
+        assertEquals("0776509158", client.getTel());
+    }
+    @Test
+    public void setCarSetsCorrectly() throws Exception{
+        Client client = setupClient();
+        client.setCar("bently");
+        assertEquals("bently", client.getCar());
+    }
+    @Test
+    public void setServiceIdSetsCorrectly() throws Exception{
+        Client client = setupClient();
+        client.setServiceId(1);
+        assertEquals(1, client.getServiceId());
+    }
     //HELPER
     public Client setupClient()throws Exception{
         return new Client("gathoni","titoyut56@gmail.com","0717553340","bmw",1);

@@ -1,8 +1,10 @@
 package dao;
 
+import models.Client;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -26,5 +28,15 @@ public class Sql2oClientDaoTest {
     public void shutDown() throws Exception{
         conn.close();
         System.out.println("closing database");
+    }
+    @Test
+    public void addingClientsSetsId() throws Exception{
+
+    }
+
+        //HELPERS
+    public Client setupClient() throws Exception{
+        Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);
+        return client;
     }
 }

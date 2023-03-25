@@ -34,13 +34,16 @@ public class Sql2oMechanicDao implements MechanicDao {
         try (Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM mechanics")
                     .executeAndFetch(Mechanic.class);
-
         }
     }
 
     @Override
     public List<Client> getAllMechanicsByClient(int mechanicId) {
-        return null;
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM clients WHERE clientId = :clientId")
+                    .addParameter("mechanicId", mechanicId)
+                    .executeAndFetch(Client.class);
+        }
     }
 
     @Override

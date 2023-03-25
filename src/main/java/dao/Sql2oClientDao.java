@@ -50,7 +50,7 @@ public class Sql2oClientDao implements ClientDao{
 
     @Override
     public void update(int id, String name, String email, String tel, String car, int serviceId) {
-        String sql = "UPDATE clients SET(name, email, tel, car, serviceId)=(:name, :email, :tel, :car, :serviceId)";
+        String sql = "UPDATE clients SET(name, email, tel, car, serviceId)=(:name, :email, :tel, :car, :serviceId) WHERE id = :id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)

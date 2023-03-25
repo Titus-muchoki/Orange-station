@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-03-25T11:55:01" hostname="kajela-HP-EliteBook-840-G3" time="0.487">
+<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-03-25T14:06:12" hostname="kajela-HP-EliteBook-840-G3" time="1.412">
   <properties/>
-  <testcase name="deleteByIdDeletesCorrectClient" classname="dao.Sql2oClientDaoTest" time="0.487">
-    <failure message="java.lang.AssertionError: expected:&lt;models.Client@bc18f4c9&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;models.Client@bc18f4c9&gt; but was:&lt;0&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:118)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at dao.Sql2oClientDaoTest.deleteByIdDeletesCorrectClient(Sql2oClientDaoTest.java:75)
+  <testcase name="updateClientUpdatesAllField" classname="dao.Sql2oClientDaoTest" time="1.412">
+    <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
+	at dao.Sql2oClientDaoTest.updateClientUpdatesAllField(Sql2oClientDaoTest.java:62)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

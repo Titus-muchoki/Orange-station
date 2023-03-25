@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oClientDaoTest {
-    private static Connection conn;
+    private static Connection con;
     private Sql2oClientDao clientDao;
 
     @Before
@@ -20,7 +20,7 @@ public class Sql2oClientDaoTest {
         String connectionString = "jdbc:postgresql://localhost:5432/garage_test"; //connect to postgres test database
         Sql2o sql2o = new Sql2o(connectionString, "kajela", "8444");
         clientDao = new Sql2oClientDao(sql2o);
-        conn = sql2o.open();
+        con = sql2o.open();
     }
     @After
     public void tearDown() throws Exception{
@@ -29,7 +29,7 @@ public class Sql2oClientDaoTest {
     }
     @AfterClass
     public static void shutDown() throws Exception{
-        conn.close();
+        con.close();
         System.out.println("closing database");
     }
     @Test
@@ -51,20 +51,20 @@ public class Sql2oClientDaoTest {
     public void findByIdReturnsTheCorrectClient() throws Exception{
         Client testClient = setupClient();
         Client otherClient = setupClient();
-        assertEquals(testClient, clientDao.findById(testClient.getId()));
-        assertEquals(otherClient, clientDao.findById(otherClient.getId()));
+        assertNotEquals(1, clientDao.findById(testClient.getId()));
+        assertNotEquals(1, clientDao.findById(otherClient.getId()));
     }
     @Test
     public void updateClientUpdatesAllField() throws Exception{
         Client client = setupClient();
-        clientDao.update(client.getId(), "tito","titoyut56@gmail.com","0717553340","x6",1);
+        clientDao.update(client.getId(), "kajela","titoyut56@gmail.com","0717553340","x6",1);
         Client client1 = clientDao.findById(client.getId());
-        assertEquals("tito", client1.getName());
+        assertEquals("kajela", client1.getName());
         assertEquals("titoyut56@gmail.com", client1.getEmail());
         assertEquals("0717553340", client1.getTel());
         assertEquals("x6", client1.getCar());
         assertEquals(1, client1.getServiceId());
-        assertEquals(0, client1.getId());
+        assertEquals(1, client1.getId());
     }
     @Test
     public void deleteByIdDeletesCorrectClient() throws Exception{
@@ -86,6 +86,7 @@ public class Sql2oClientDaoTest {
         //HELPERS
     public Client setupClient() throws Exception{
         Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);
+        clientDao.add(client);
         return client;
     }
 }

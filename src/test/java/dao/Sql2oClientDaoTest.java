@@ -66,6 +66,22 @@ public class Sql2oClientDaoTest {
         assertEquals(1, client1.getServiceId());
         assertEquals(0, client1.getId());
     }
+    @Test
+    public void deleteByIdDeletesCorrectClient() throws Exception{
+        Client client = setupClient();
+        Client otherClient = setupClient();
+        clientDao.deleteById(client.getId());
+        clientDao.deleteById(otherClient.getId());
+        assertNotEquals(client, clientDao.getAll().size());
+        assertNotEquals(otherClient, clientDao.getAll().size());
+    }
+    @Test
+    public void clearAllClearsAll() throws Exception{
+        Client client = setupClient();
+        Client otherClient = setupClient();
+        clientDao.clearAll();
+        assertEquals(0, clientDao.getAll().size());
+    }
 
         //HELPERS
     public Client setupClient() throws Exception{

@@ -10,7 +10,7 @@ public interface ClientDao {
     void add(Client client);
     //READ
     List<Client> getAll();
-    Client findById(int Id);
+    Client findById(int id);
     //UPDATE
     void update(int id, String name, String email, String tel, String car, int serviceId);
     //DELETE

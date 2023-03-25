@@ -39,8 +39,13 @@ public class Sql2oClientDao implements ClientDao{
     }
 
     @Override
-    public Client findById(int Id) {
-        return null;
+    public Client findById(int id) {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM clients WHERE id = :id")
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Client.class);
+
+        }
     }
 
     @Override

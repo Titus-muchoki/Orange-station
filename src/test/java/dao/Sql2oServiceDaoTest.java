@@ -5,11 +5,14 @@ import models.Service;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import static org.junit.Assert.assertEquals;
+
 public class Sql2oServiceDaoTest {
-    private Connection con;
+    private static Connection con;
     private Sql2oServiceDao serviceDao;
     private  Sql2oClientDao clientDao;
     @Before
@@ -26,9 +29,14 @@ public class Sql2oServiceDaoTest {
         System.out.println("clearing database");
     }
     @AfterClass
-    public void shutDown() throws Exception{
+    public static void shutDown() throws Exception{
         con.close();
         System.out.println("closing database");
+    }
+    @Test
+    public void setServiceIdSetsId() throws Exception{
+        Service service= setupService();
+        assertEquals(1, service.getId());
     }
     //HELPERS
     public Service setupService() throws Exception{

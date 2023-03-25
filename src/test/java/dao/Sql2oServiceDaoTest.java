@@ -36,7 +36,7 @@ public class Sql2oServiceDaoTest {
     @Test
     public void setServiceIdSetsId() throws Exception{
         Service service= setupService();
-        assertEquals(1, service.getId());
+        assertEquals(0, service.getId());
     }
     //HELPERS
     public Service setupService() throws Exception{

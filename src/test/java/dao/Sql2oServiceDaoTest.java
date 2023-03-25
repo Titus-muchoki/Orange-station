@@ -30,7 +30,6 @@ public class Sql2oServiceDaoTest {
     }
     @AfterClass
     public static void shutDown() throws Exception{
-        con.close();
         System.out.println("closing database");
     }
     @Test

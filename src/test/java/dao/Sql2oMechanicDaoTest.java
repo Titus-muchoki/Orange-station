@@ -1,5 +1,7 @@
 package dao;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -15,5 +17,15 @@ public class Sql2oMechanicDaoTest {
         mechanicDao = new Sql2oMechanicDao(sql2o);
         clientDao = new Sql2oClientDao(sql2o);
         conn = sql2o.open();
+    }
+    @After
+    public void tearDown() throws Exception{
+        clientDao.clearAll();
+        mechanicDao.clearAll();
+        System.out.println("closing database");
+    }
+    @AfterClass
+    public static void shutDown() throws Exception{
+        System.out.println("closing database");
     }
 }

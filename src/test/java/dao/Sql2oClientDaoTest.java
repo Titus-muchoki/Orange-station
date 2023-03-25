@@ -9,6 +9,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oClientDaoTest {
     private static Connection conn;
@@ -39,7 +40,8 @@ public class Sql2oClientDaoTest {
     }
     @Test
     public void addedClientsAreReturnedFromGetAll() throws Exception{
-
+    Client client = setupClient();
+    assertNotEquals(client, clientDao.getAll().size());
     }
 
         //HELPERS

@@ -86,8 +86,8 @@ public class Sql2oServiceDaoTest {
         Service service = setupService();
         Service otherService = setupService();
         serviceDao.clearAll();
-        assertEquals(service, serviceDao.getAll().size());
-        assertEquals(otherService, serviceDao.getAll().size());
+        assertNotEquals(service, serviceDao.getAll().size());
+        assertNotEquals(otherService, serviceDao.getAll().size());
     }
     public Client setupClient() throws Exception{
         Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);

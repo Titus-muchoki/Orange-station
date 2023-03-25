@@ -79,6 +79,12 @@ public class Sql2oClientDao implements ClientDao{
 
     @Override
     public void clearAll() {
-
+    String sql = "DELETE from clients";
+    try (Connection con = sql2o.open()){
+        con.createQuery(sql)
+                .executeUpdate();
+    }catch (Sql2oException ex){
+        System.out.println(ex);
+    }
     }
 }

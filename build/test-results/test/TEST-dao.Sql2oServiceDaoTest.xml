@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oServiceDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-25T15:38:29" hostname="kajela-HP-EliteBook-840-G3" time="0.496">
+<testsuite name="dao.Sql2oServiceDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-25T16:24:42" hostname="kajela-HP-EliteBook-840-G3" time="0.629">
   <properties/>
-  <testcase name="noServiceReturnsEmptyList" classname="dao.Sql2oServiceDaoTest" time="0.496"/>
+  <testcase name="existingServicesCanBeFoundById" classname="dao.Sql2oServiceDaoTest" time="0.629"/>
   <system-out><![CDATA[clearing database
 closing database
 ]]></system-out>

@@ -10,6 +10,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oServiceDaoTest {
     private static Connection con;
@@ -52,6 +53,15 @@ public class Sql2oServiceDaoTest {
     //HELPERS
     public Service setupService() throws Exception{
         return new Service("dashboard");
+    }
+    @Test
+    public void existingServicesCanBeFoundById()throws Exception{
+        Service service = setupService();
+        Service otherService = setupService();
+        serviceDao.findById(service.getId());
+        serviceDao.findById(otherService.getId());
+        assertNotEquals(service, serviceDao.getAll().size());
+        assertNotEquals(otherService, serviceDao.getAll().size());
     }
     public Client setupClient() throws Exception{
         Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);

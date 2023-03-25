@@ -32,7 +32,10 @@ public class Sql2oClientDao implements ClientDao{
 
     @Override
     public List<Client> getAll() {
-        return null;
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM clients")
+                    .executeAndFetch(Client.class);
+        }
     }
 
     @Override

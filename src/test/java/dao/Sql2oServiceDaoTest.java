@@ -45,6 +45,10 @@ public class Sql2oServiceDaoTest {
         assertEquals(0, serviceDao.getAll().size());
         assertEquals(0, serviceDao.getAll().size());
     }
+    @Test
+    public void noServiceReturnsEmptyList() throws Exception{
+        assertEquals(0, serviceDao.getAll().size());
+    }
     //HELPERS
     public Service setupService() throws Exception{
         return new Service("dashboard");

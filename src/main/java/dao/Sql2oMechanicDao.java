@@ -31,7 +31,11 @@ public class Sql2oMechanicDao implements MechanicDao {
 
     @Override
     public List<Mechanic> getAll() {
-        return null;
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM mechanics")
+                    .executeAndFetch(Mechanic.class);
+
+        }
     }
 
     @Override

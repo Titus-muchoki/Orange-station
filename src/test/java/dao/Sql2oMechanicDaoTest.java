@@ -3,6 +3,7 @@ package dao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -28,4 +29,5 @@ public class Sql2oMechanicDaoTest {
     public static void shutDown() throws Exception{
         System.out.println("closing database");
     }
+
 }

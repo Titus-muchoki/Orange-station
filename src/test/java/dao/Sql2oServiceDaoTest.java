@@ -49,10 +49,7 @@ public class Sql2oServiceDaoTest {
     public void noServiceReturnsEmptyList() throws Exception{
         assertEquals(0, serviceDao.getAll().size());
     }
-    //HELPERS
-    public Service setupService() throws Exception{
-        return new Service("dashboard");
-    }
+
     @Test
     public void existingServicesCanBeFoundById()throws Exception{
         Service service = setupService();
@@ -103,6 +100,10 @@ public class Sql2oServiceDaoTest {
         assertFalse(serviceDao.getAllClientsByService(serviceId).contains(newClient));
         assertFalse(serviceDao.getAllClientsByService(serviceId).contains(otherClient));
         assertFalse(serviceDao.getAllClientsByService(serviceId).contains(thirdClient));
+    }
+    //HELPERS
+    public Service setupService() throws Exception{
+        return new Service("dashboard");
     }
     public Client setupClient() throws Exception{
         Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);

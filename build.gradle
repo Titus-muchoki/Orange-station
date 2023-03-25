@@ -17,6 +17,5 @@ dependencies {
     implementation "com.sparkjava:spark-template-handlebars:2.7.1"
     implementation group: 'org.postgresql', name: 'postgresql', version: '9.3-1100-jdbc4' // ADD ME FOR POSTGRES VERSION 9.x
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.9'
-
 }
 

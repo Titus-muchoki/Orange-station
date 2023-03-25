@@ -43,6 +43,10 @@ public class Sql2oClientDaoTest {
     Client client = setupClient();
     assertNotEquals(client, clientDao.getAll().size());
     }
+    @Test
+    public void noClientsReturnsEmptyList() throws Exception{
+        assertEquals(0, clientDao.getAll().size());
+    }
 
         //HELPERS
     public Client setupClient() throws Exception{

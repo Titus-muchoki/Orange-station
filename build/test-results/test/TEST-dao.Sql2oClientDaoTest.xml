@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-25T11:36:22" hostname="kajela-HP-EliteBook-840-G3" time="0.372">
+<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-25T11:37:59" hostname="kajela-HP-EliteBook-840-G3" time="0.415">
   <properties/>
-  <testcase name="addingClientsSetsId" classname="dao.Sql2oClientDaoTest" time="0.372"/>
+  <testcase name="noClientsReturnsEmptyList" classname="dao.Sql2oClientDaoTest" time="0.415"/>
   <system-out><![CDATA[clearing database
 closing database
 ]]></system-out>

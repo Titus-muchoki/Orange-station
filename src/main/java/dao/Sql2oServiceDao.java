@@ -69,7 +69,7 @@ public class Sql2oServiceDao implements ServiceDao {
 
     @Override
     public void deleteById(int id) {
-    String sql = "SELECT from services WHERE id = :id";
+    String sql = "DELETE from services WHERE id = :id";
     try (Connection con = sql2o.open()){
         con.createQuery(sql)
                 .addParameter("id", id)
@@ -81,7 +81,7 @@ public class Sql2oServiceDao implements ServiceDao {
 
     @Override
     public void clearAll() {
-    String sql = "SELECT from services";
+    String sql = "DELETE from services";
     try (Connection con = sql2o.open()){
         con.createQuery(sql)
                 .executeUpdate();

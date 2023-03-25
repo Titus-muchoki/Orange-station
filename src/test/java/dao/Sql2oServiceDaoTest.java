@@ -38,6 +38,13 @@ public class Sql2oServiceDaoTest {
         Service service= setupService();
         assertEquals(0, service.getId());
     }
+    @Test
+    public void getAllServicesReturnsAll()throws Exception{
+        Service service = setupService();
+        Service otherService = setupService();
+        assertEquals(0, serviceDao.getAll().size());
+        assertEquals(0, serviceDao.getAll().size());
+    }
     //HELPERS
     public Service setupService() throws Exception{
         return new Service("dashboard");

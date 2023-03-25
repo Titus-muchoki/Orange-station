@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import static org.junit.Assert.assertEquals;
+
 public class Sql2oClientDaoTest {
     private static Connection conn;
     private Sql2oClientDao clientDao;
@@ -25,12 +27,18 @@ public class Sql2oClientDaoTest {
         clientDao.clearAll();
     }
     @AfterClass
-    public void shutDown() throws Exception{
+    public static void shutDown() throws Exception{
         conn.close();
         System.out.println("closing database");
     }
     @Test
     public void addingClientsSetsId() throws Exception{
+        Client client = setupClient();
+        assertEquals(0, client.getId());
+
+    }
+    @Test
+    public void addedClientsAreReturnedFromGetAll() throws Exception{
 
     }
 

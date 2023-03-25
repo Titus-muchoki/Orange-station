@@ -47,6 +47,25 @@ public class Sql2oClientDaoTest {
     public void noClientsReturnsEmptyList() throws Exception{
         assertEquals(0, clientDao.getAll().size());
     }
+    @Test
+    public void findByIdReturnsTheCorrectClient() throws Exception{
+        Client testClient = setupClient();
+        Client otherClient = setupClient();
+        assertEquals(testClient, clientDao.findById(testClient.getId()));
+        assertEquals(otherClient, clientDao.findById(otherClient.getId()));
+    }
+    @Test
+    public void updateClientUpdatesAllField() throws Exception{
+        Client client = setupClient();
+        clientDao.update(client.getId(), "tito","titoyut56@gmail.com","0717553340","x6",1);
+        Client client1 = clientDao.findById(client.getId());
+        assertEquals("tito", client1.getName());
+        assertEquals("titoyut56@gmail.com", client1.getEmail());
+        assertEquals("0717553340", client1.getTel());
+        assertEquals("x6", client1.getCar());
+        assertEquals(1, client1.getServiceId());
+        assertEquals(0, client1.getId());
+    }
 
         //HELPERS
     public Client setupClient() throws Exception{

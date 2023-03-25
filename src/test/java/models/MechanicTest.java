@@ -20,6 +20,11 @@ public class MechanicTest {
         Mechanic mechanic = setupMechanic();
         assertEquals("kajela", mechanic.getName());
     }
+    @Test
+    public void getChargesReturnsCorrectly()throws Exception{
+        Mechanic mechanic = setupMechanic();
+        assertEquals("200", mechanic.getCharges());
+    }
     //HELPER
     public Mechanic setupMechanic() throws Exception{
         return new Mechanic("kajela","200",1);

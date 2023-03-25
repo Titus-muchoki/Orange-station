@@ -9,8 +9,7 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class Sql2oServiceDaoTest {
     private static Connection con;
@@ -88,6 +87,22 @@ public class Sql2oServiceDaoTest {
         serviceDao.clearAll();
         assertNotEquals(service, serviceDao.getAll().size());
         assertNotEquals(otherService, serviceDao.getAll().size());
+    }
+    @Test
+    public void getAllClientsByServicesReturnsCorrectly()throws Exception{
+        Service service = setupService();
+        serviceDao.add(service);
+        int serviceId = service.getId();
+        Client newClient = new Client("tito","titoyut56@gmail.com","0717553340","gle",serviceId);
+        Client otherClient = new Client("kajela","kajela720@gmail.com","0776509158","bently",serviceId);
+        Client thirdClient = new Client("wambuchiri","wambuchiri12@gmail.com","0720009579","tx", serviceId);
+        clientDao.add(newClient);
+        clientDao.add(otherClient);
+        clientDao.add(thirdClient);
+        assertEquals(2,serviceDao.getAllClientsByService(serviceId).size());
+        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(newClient));
+        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(otherClient));
+        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(thirdClient));
     }
     public Client setupClient() throws Exception{
         Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);

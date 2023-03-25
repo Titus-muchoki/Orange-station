@@ -10,7 +10,7 @@ public interface ServiceDao {
     void add(Service service);
     //READ
     List<Service> getAll();
-    List<Client> getAllClientsByService();
+    List<Client> getAllClientsByService(int serviceId);
     Service findById(int id);
     //UPDATE
     void update(int id, String name);

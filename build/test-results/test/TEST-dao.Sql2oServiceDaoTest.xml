@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oServiceDaoTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-03-25T17:15:48" hostname="kajela-HP-EliteBook-840-G3" time="0.797">
+<testsuite name="dao.Sql2oServiceDaoTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-03-25T17:48:32" hostname="kajela-HP-EliteBook-840-G3" time="0.978">
   <properties/>
-  <testcase name="clearAll" classname="dao.Sql2oServiceDaoTest" time="0.797">
-    <failure message="java.lang.AssertionError: expected:&lt;models.Service@6fd26bad&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;models.Service@6fd26bad&gt; but was:&lt;0&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:118)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at dao.Sql2oServiceDaoTest.clearAll(Sql2oServiceDaoTest.java:89)
+  <testcase name="getAllClientsByServicesReturnsCorrectly" classname="dao.Sql2oServiceDaoTest" time="0.978">
+    <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.sql2o.Query.addParameterInternal(Query.java:133)
+	at org.sql2o.Query.addParameter(Query.java:210)
+	at dao.Sql2oServiceDao.getAllClientsByService(Sql2oServiceDao.java:44)
+	at dao.Sql2oServiceDaoTest.getAllClientsByServicesReturnsCorrectly(Sql2oServiceDaoTest.java:102)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

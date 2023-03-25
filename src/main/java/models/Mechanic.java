@@ -26,4 +26,12 @@ public class Mechanic {
     public int hashCode() {
         return Objects.hash(name, charges, clientId, id);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

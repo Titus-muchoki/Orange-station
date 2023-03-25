@@ -2,6 +2,9 @@ package models;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class ServiceTest {
     @Before
@@ -12,6 +15,12 @@ public class ServiceTest {
     public void tearDown() throws Exception{
 
     }
+    @Test
+    public void getNameReturnsCorrectly() throws Exception{
+        Service service = setupService();
+        assertEquals("maintenance", service.getName());
+    }
+
     //
     public Service setupService() throws Exception{
         return new Service("maintenance");

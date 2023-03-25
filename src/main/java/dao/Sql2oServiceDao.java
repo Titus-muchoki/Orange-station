@@ -56,7 +56,7 @@ public class Sql2oServiceDao implements ServiceDao {
 
     @Override
     public void update(int id, String name) {
-    String sql = "UPDATE services SET(name)=(:name)WHERE id = :id";
+    String sql = "UPDATE services SET name = :name WHERE id = :id";
     try (Connection con = sql2o.open()){
         con.createQuery(sql)
                 .addParameter("name", name)

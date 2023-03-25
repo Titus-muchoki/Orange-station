@@ -48,7 +48,11 @@ public class Sql2oMechanicDao implements MechanicDao {
 
     @Override
     public Mechanic findById(int id) {
-        return null;
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM mechanics WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Mechanic.class);
+        }
     }
 
     @Override

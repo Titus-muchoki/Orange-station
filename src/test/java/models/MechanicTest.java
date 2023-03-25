@@ -25,6 +25,11 @@ public class MechanicTest {
         Mechanic mechanic = setupMechanic();
         assertEquals("200", mechanic.getCharges());
     }
+    @Test
+    public void getClientIdReturnsCorrectly()throws Exception{
+        Mechanic mechanic = setupMechanic();
+        assertEquals(1, mechanic.getClientId());
+    }
     //HELPER
     public Mechanic setupMechanic() throws Exception{
         return new Mechanic("kajela","200",1);

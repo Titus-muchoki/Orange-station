@@ -39,4 +39,20 @@ public class Mechanic {
     public void setCharges(String charges) {
         this.charges = charges;
     }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -20,6 +20,12 @@ public class ServiceTest {
         Service service = setupService();
         assertEquals("maintenance", service.getName());
     }
+    @Test
+    public void setNameSetsCorrectly() throws Exception{
+        Service service = setupService();
+        service.setName("repair");
+        assertEquals("repair", service.getName());
+    }
 
     //
     public Service setupService() throws Exception{

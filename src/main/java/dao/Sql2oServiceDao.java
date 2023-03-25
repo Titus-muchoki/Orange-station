@@ -31,12 +31,18 @@ public class Sql2oServiceDao implements ServiceDao {
 
     @Override
     public List<Service> getAll() {
-        return null;
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM services")
+                    .executeAndFetch(Service.class);
+        }
     }
 
     @Override
     public List<Client> getAllClientsByService() {
-        return null;
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM clients WHERE serviceId = serviceId")
+                    .executeAndFetch(Client.class);
+        }
     }
 
     @Override

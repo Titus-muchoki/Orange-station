@@ -1,6 +1,7 @@
 package dao;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -20,5 +21,10 @@ public class Sql2oClientDaoTest {
     public void tearDown() throws Exception{
         System.out.println("clearing database");
         clientDao.clearAll();
+    }
+    @AfterClass
+    public void shutDown() throws Exception{
+        conn.close();
+        System.out.println("closing database");
     }
 }

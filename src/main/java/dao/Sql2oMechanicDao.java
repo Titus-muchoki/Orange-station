@@ -56,8 +56,17 @@ public class Sql2oMechanicDao implements MechanicDao {
     }
 
     @Override
-    public void update(int id, String name, String charges) {
-
+    public void update(int id, String name, String charges, int clientId) {
+    String sql = "UPDATE mechanics SET(name, charges, clientId)=(:name, :charges, :clientId)WHERE id = :id";
+    try (Connection con = sql2o.open()){
+        con.createQuery(sql)
+                .addParameter("name", name)
+                .addParameter("charges", charges)
+                .addParameter("clientId", clientId)
+                .executeUpdate();
+    }catch (Sql2oException ex){
+        System.out.println(ex);
+    }
     }
 
     @Override

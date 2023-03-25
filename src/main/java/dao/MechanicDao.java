@@ -13,7 +13,7 @@ public interface MechanicDao {
     List<Client> getAllMechanicsByClient(int mechanicId);
     Mechanic findById(int id);
     //UPDATE
-    void update(int id, String name, String charges);
+    void update(int id, String name, String charges, int clientId);
     //DELETE
     void deleteById(int id);
     void clearAll();

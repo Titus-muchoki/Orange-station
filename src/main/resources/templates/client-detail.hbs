@@ -1,0 +1,12 @@
+{{#partial "content"}}
+    <p>Name:{{ client.name }} </p>
+    <p>Email:{{ client.email }} </p>
+    <p>Tel:{{ client.tel }} </p>
+    <p>Car:{{ client.car }} </p>
+
+    <p>
+        <a href="/clients/{{client.id}}/edit">Edit this client</a><br>
+    </p>
+
+{{/partial}}
+{{> layout.hbs}}

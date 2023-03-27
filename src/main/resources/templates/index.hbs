@@ -1,0 +1,14 @@
+{{#partial "content"}}
+    <h1> List of all clients</h1>
+
+    {{#if clients}}
+        {{#each clients }}
+
+            <p><a href="/services/{{serviceId}}/clients/{{id}}">{{name}}{{email}}{{tel}}{{car}}</a></p>
+        {{/each}}
+    {{else}}
+        <p>No clients!</p>
+    {{/if}}
+
+{{/partial}}
+{{> layout.hbs}}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>{{#block "title"}}Blog{{/block}}</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/students/new">Add a New student</a></li>
+    <li role="presentation"><a href="/units/new">Add a New units</a></li>
+    <li role="presentation"><a href="/teachers/new">Add a New teachers</a></li>
+
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Students Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if students}}
+                {{#each students}}
+                    <li><a href="/students/{{id}}">{{name}}<br>{{phoneNumber}}<br>{{email}}</a></li>
+                {{/each}}
+                <!--                <li><a href="/categories/new">Add a Category</a></li>-->
+            {{else}}
+                <!--                <li><a href="/categories/new">Add a Category</a></li>-->
+            {{/if}}
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Units  Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if units}}
+                {{#each units}}
+                    <li><a href="/units/{{id}}">{{math}}<br>
+                        {{english}}<br>
+                        {{kiswahili}}<br>
+                        {{science}}<br>
+                        {{socialStudy}}<br>
+                        {{cre}}<br>
+                        {{studentId}}
+                    </a></li>
+                {{/each}}
+                <!--                <li><a href="/units/new">Add a unit</a></li>-->
+            {{else}}
+                <!--                <li><a href="/activities/new">Add an activity</a></li>-->
+            {{/if}}
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Teachers Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if teachers}}
+                {{#each teachers}}
+                    <li><a href="/teachers/{{id}}">{{name}}<br>{{comment}}<br>{{studentId}}</a></li>
+                {{/each}}
+                <!--                <li><a href="/categories/new">Add a Category</a></li>-->
+            {{else}}
+                <!--                <li><a href="/categories/new">Add a Category</a></li>-->
+            {{/if}}
+        </ul>
+    </li>
+</ul>
+
+<div class="container">
+    <!--begin main template-->
+    <h1>Welcome to Kindiga Primary</h1>
+    <div class="page-header">
+        <img src="/images/k1.jpg" width="100%" alt="">
+        <!--        <h1>Welcome to Kilimani airbnb accommodations <small>luxury and comfort .</small></h1>-->
+    </div>
+    <div class="col-md-12">
+        {{#block "content"}}
+
+        {{/block}}
+
+    </div>
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    <footer class="footer">
+        <div class="container">
+            <hr>
+            <h3 class="card-title">ABOUT</h3>
+            <P id="p1">Kindiga primary school is located in kiambu County in Githunguri constituency
+                it hast been ranked the best for the last ten years KCPE examination results in the constituency <br>
+                we just dont teach student we make sure they are able to apply the knowldege <br>
+                in their day to day life. <br>
+                This is what differentiate our student who study at Kingiga primary <br>
+                from other students </P>
+        </div>
+    </footer>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </html>
+{{/block}}

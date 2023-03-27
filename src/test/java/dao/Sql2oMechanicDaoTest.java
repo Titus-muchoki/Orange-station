@@ -67,6 +67,15 @@ public class Sql2oMechanicDaoTest {
         assertEquals("200", mechanic1.getCharges());
         assertEquals("1", mechanic1.getClientId());
     }
+    @Test
+    public void deleteByIdDeletesTheCorrectField() throws Exception{
+        Mechanic mechanic = setupMechanic();
+        Mechanic otherMechanic = setupMechanic();
+        mechanicDao.deleteById(mechanic.getId());
+        mechanicDao.deleteById(otherMechanic.getId());
+        assertNotEquals(mechanic, mechanicDao.getAll().size());
+        assertNotEquals(otherMechanic, mechanicDao.getAll().size());
+    }
     //HELPERS
     public Mechanic setupMechanic(){
         return new Mechanic("joy","200",1);

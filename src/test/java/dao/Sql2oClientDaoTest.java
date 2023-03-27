@@ -57,6 +57,7 @@ public class Sql2oClientDaoTest {
     @Test
     public void updateClientUpdatesAllField() throws Exception{
         Client client = setupClient();
+        clientDao.add(client);
         clientDao.update(client.getId(), "kajela","titoyut56@gmail.com","0717553340","x6",1);
         Client client1 = clientDao.findById(client.getId());
         assertEquals("kajela", client1.getName());

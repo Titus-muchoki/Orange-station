@@ -63,6 +63,7 @@ public class Sql2oMechanicDao implements MechanicDao {
                 .addParameter("name", name)
                 .addParameter("charges", charges)
                 .addParameter("clientId", clientId)
+                .addParameter("id",id)
                 .executeUpdate();
     }catch (Sql2oException ex){
         System.out.println(ex);

@@ -1,0 +1,19 @@
+{{#partial "content"}}
+    <p>Here are all the mechanics listed with the clients serviced:</p>
+    <ul>
+        {{#each mechanics}}
+
+            <p>
+                <a href="/clients/{{id}}/mechanics{{mechanic.clientId}}">{{name}}{{charges}}{{clientId}}</a><br>
+            </p>
+
+        {{/each}}
+    </ul>
+    <button>    <a href="/mechanics/{{mechanic.clientId}}/edit">Edit mechanics</a><br>
+    </button>
+    <button>
+        <a href="/units/{{mechanic.clientId}}/delete">DELETE this mechanics</a>
+    </button>
+{{/partial}}
+
+{{> layout.hbs}}

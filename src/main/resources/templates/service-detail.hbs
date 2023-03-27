@@ -1,0 +1,16 @@
+{{#partial "content"}}
+    <h1>{{service.name}}</h1>
+    <p>Here are all the clients listed with the chosen service:</p>
+    <ul>
+        {{#each clients}}
+            <li>
+                <p><a href="/services/{{service.id}}/clients/{{id}}">{{name}} </a></p>
+            </li>
+        {{/each}}
+    </ul>
+    <button>    <a href="/services/{{service.id}}/edit">Edit this service</a><br>
+    </button>
+    <a href="/services/{{service.id}}/delete">DELETE this service</a>
+{{/partial}}
+
+{{> layout.hbs}}

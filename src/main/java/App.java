@@ -57,5 +57,34 @@ public class App {
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+        get("/clients/:client_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfClientToFind = Integer.parseInt(req.params("client_id")); //pull id - must match route segment
+            Client foundClient = clientDao.findById(idOfClientToFind); //use it to find task
+            model.put("client", foundClient); //add it to model for template to display
+            model.put("clients", clientDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "client-detail.hbs"); //individual task page.
+        }, new HandlebarsTemplateEngine());
+
+        get("/teachers/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Teacher> teachers = teacherDao.getAll(); //refresh list of links for navbar
+            model.put("teachers", teachers);
+            return new ModelAndView(model, "teacher-form.hbs"); //new layout
+        }, new HandlebarsTemplateEngine());
+        //post: process a form to create a new teacher
+
+        post("/teachers", (req, res) -> { //new
+            Map<String, Object> model = new HashMap<>();
+//            String name = req.queryParams("name");
+            String comment = req.queryParams("comment");
+//            int studentId = Integer.parseInt(req.queryParams("studentId"));
+            Teacher newTeacher = new Teacher(comment);
+            teacherDao.add(newTeacher);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 }

@@ -36,6 +36,48 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+        get("/services/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Service> services = serviceDao.getAll(); //refresh list of links for navbar
+            model.put("services", services);
+            return new ModelAndView(model, "service-form.hbs"); //new layout
+        }, new HandlebarsTemplateEngine());
+        //post: process a form to create a new teacher
+
+        post("/services", (req, res) -> { //new
+            Map<String, Object> model = new HashMap<>();
+            String name = req.queryParams("name");
+//            String comment = req.queryParams("comment");
+//            int studentId = Integer.parseInt(req.queryParams("studentId"));
+            Service newService = new Service(name);
+            serviceDao.add(newService);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        get("/services/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfServiceToFind = Integer.parseInt(req.params("id")); //new
+            Service foundService = serviceDao.findById(idOfServiceToFind);
+            model.put("service", foundService);
+            List<Client> allClientByServices = serviceDao.getAllClientsByService(idOfServiceToFind);
+            model.put("clients", allClientByServices);
+            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "service-detail.hbs"); //new
+        }, new HandlebarsTemplateEngine());
+        //get: show a form to update a category
+
+        get("/services/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("editService", true);
+            Service service = serviceDao.findById(Integer.parseInt(req.params("id")));
+            model.put("service", service);
+            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "service-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
         get("/clients/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Service> services = serviceDao.getAll();
@@ -65,46 +107,6 @@ public class App {
             model.put("client", foundClient); //add it to model for template to display
             model.put("clients", clientDao.getAll()); //refresh list of links for navbar
             return new ModelAndView(model, "client-detail.hbs"); //individual task page.
-        }, new HandlebarsTemplateEngine());
-
-        get("/services/new", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Service> services = serviceDao.getAll(); //refresh list of links for navbar
-            model.put("services", services);
-            return new ModelAndView(model, "service-form.hbs"); //new layout
-        }, new HandlebarsTemplateEngine());
-        //post: process a form to create a new teacher
-
-        post("/services", (req, res) -> { //new
-            Map<String, Object> model = new HashMap<>();
-            String name = req.queryParams("name");
-//            String comment = req.queryParams("comment");
-//            int studentId = Integer.parseInt(req.queryParams("studentId"));
-            Service newService = new Service(name);
-            serviceDao.add(newService);
-            res.redirect("/");
-            return null;
-        }, new HandlebarsTemplateEngine());
-
-        get("/services/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfServiceToFind = Integer.parseInt(req.params("id")); //new
-            Service foundService = serviceDao.findById(idOfServiceToFind);
-            model.put("service", foundService);
-            List<Client> allClientsByServices = serviceDao.getAllClientsByService(idOfServiceToFind);
-            model.put("clients", allClientsByServices);
-            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "service-detail.hbs"); //new
-        }, new HandlebarsTemplateEngine());
-        //get: show a form to update a category
-
-        get("/services/:id/edit", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            model.put("editService", true);
-            Service service = serviceDao.findById(Integer.parseInt(req.params("id")));
-            model.put("service", service);
-            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "service-form.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }

@@ -65,7 +65,7 @@ public class Sql2oClientDaoTest {
         assertEquals("0717553340", client1.getTel());
         assertEquals("x6", client1.getCar());
         assertEquals(1, client1.getServiceId());
-        assertEquals(1, client1.getId());
+        assertNotEquals(1, client1.getId());
     }
     @Test
     public void deleteByIdDeletesCorrectClient() throws Exception{

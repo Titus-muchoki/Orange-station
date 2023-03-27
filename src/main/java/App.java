@@ -167,17 +167,12 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-
-
-        //get: show a form to create a new student
-
         get("/mechanics/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Mechanic> mechanics = mechanicDao.getAll(); //refresh list of links for navbar
             model.put("mechanics", mechanics);
             return new ModelAndView(model, "mechanic-form.hbs"); //new layout
         }, new HandlebarsTemplateEngine());
-
 
     }
 }

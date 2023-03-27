@@ -67,21 +67,21 @@ public class App {
             return new ModelAndView(model, "client-detail.hbs"); //individual task page.
         }, new HandlebarsTemplateEngine());
 
-        get("/teachers/new", (req, res) -> {
+        get("/services/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Teacher> teachers = teacherDao.getAll(); //refresh list of links for navbar
-            model.put("teachers", teachers);
-            return new ModelAndView(model, "teacher-form.hbs"); //new layout
+            List<Service> services = serviceDao.getAll(); //refresh list of links for navbar
+            model.put("services", services);
+            return new ModelAndView(model, "service-form.hbs"); //new layout
         }, new HandlebarsTemplateEngine());
         //post: process a form to create a new teacher
 
-        post("/teachers", (req, res) -> { //new
+        post("/services", (req, res) -> { //new
             Map<String, Object> model = new HashMap<>();
-//            String name = req.queryParams("name");
-            String comment = req.queryParams("comment");
+            String name = req.queryParams("name");
+//            String comment = req.queryParams("comment");
 //            int studentId = Integer.parseInt(req.queryParams("studentId"));
-            Teacher newTeacher = new Teacher(comment);
-            teacherDao.add(newTeacher);
+            Service newService = new Service(name);
+            serviceDao.add(newService);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

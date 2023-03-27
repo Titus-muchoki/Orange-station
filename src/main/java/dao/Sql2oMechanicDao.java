@@ -23,7 +23,7 @@ public class Sql2oMechanicDao implements MechanicDao {
                 .bind(mechanic)
                 .executeUpdate()
                 .getKey();
-        mechanic.getId();
+        mechanic.setId(id);
     }catch (Sql2oException ex){
         System.out.println(ex);
     }

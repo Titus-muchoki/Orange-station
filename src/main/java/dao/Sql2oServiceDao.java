@@ -23,7 +23,7 @@ public class Sql2oServiceDao implements ServiceDao {
                     .bind(service)
                     .executeUpdate()
                     .getKey();
-            service.getId();
+            service.setId(id);
         }catch (Sql2oException ex){
             System.out.println(ex);
         }

@@ -59,13 +59,13 @@ public class Sql2oServiceDaoTest {
         assertNotEquals(otherService, serviceDao.getAll().size());
     }
     @Test
-    public void updateChangesServiceContent()throws Exception{
-        String initialService = "redpill";
-        Service service = new Service(initialService);
+    public void updateChangesGarageContent() throws Exception {
+        String initialDescription = "viral";
+        Service service = new Service(initialDescription);
         serviceDao.add(service);
-        serviceDao.update(service.getId(),"kajela");
-        Service updatedService = serviceDao.findById(service.getId());
-        assertNotEquals(initialService, updatedService.getName());
+        serviceDao.update(service.getId(),"Cleaning");
+        Service updatedComment = serviceDao.findById(service.getId());
+        assertNotEquals(initialDescription, updatedComment.getName());
     }
     @Test
     public void deleteByIdDeletesCorrectly() throws Exception{

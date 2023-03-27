@@ -79,9 +79,9 @@ public class App {
 
         post("/services/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfServicesToEdit = Integer.parseInt(req.params("id"));
-            String newName = req.queryParams("newServiceName");
-            serviceDao.update(idOfServicesToEdit, newName);
+            int idOfServiceToEdit = Integer.parseInt(req.params("id"));
+            String newService = req.queryParams("newServiceName");
+            serviceDao.update(idOfServiceToEdit, newService);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

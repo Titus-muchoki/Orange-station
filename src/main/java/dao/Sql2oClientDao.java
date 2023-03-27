@@ -23,7 +23,7 @@ public class Sql2oClientDao implements ClientDao{
                     .bind(client)
                     .executeUpdate()
                     .getKey();
-            client.getId();
+            client.setId(id);
         }catch (Sql2oException ex){
             System.out.println(ex);
         }

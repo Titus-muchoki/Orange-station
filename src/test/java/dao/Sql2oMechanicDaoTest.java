@@ -76,6 +76,13 @@ public class Sql2oMechanicDaoTest {
         assertNotEquals(mechanic, mechanicDao.getAll().size());
         assertNotEquals(otherMechanic, mechanicDao.getAll().size());
     }
+    @Test
+    public void ClearAllClearsMechanic()throws Exception{
+        Mechanic mechanic = setupMechanic();
+        Mechanic otherMechanic = setupMechanic();
+        mechanicDao.clearAll();
+        assertNotEquals(1, mechanicDao.getAll().size());
+    }
     //HELPERS
     public Mechanic setupMechanic(){
         return new Mechanic("joy","200",1);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oMechanicDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-27T13:11:16" hostname="kajela-HP-EliteBook-840-G3" time="0.651">
+<testsuite name="dao.Sql2oMechanicDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-27T13:14:18" hostname="kajela-HP-EliteBook-840-G3" time="0.569">
   <properties/>
-  <testcase name="deleteByIdDeletesTheCorrectField" classname="dao.Sql2oMechanicDaoTest" time="0.651"/>
+  <testcase name="ClearAllClearsMechanic" classname="dao.Sql2oMechanicDaoTest" time="0.569"/>
   <system-out><![CDATA[closing database
 closing database
 ]]></system-out>

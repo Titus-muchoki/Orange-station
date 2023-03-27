@@ -174,5 +174,17 @@ public class App {
             return new ModelAndView(model, "mechanic-form.hbs"); //new layout
         }, new HandlebarsTemplateEngine());
 
+        post("/mechanics", (req, res) -> { //URL to make new task on POST route
+            Map<String, Object> model = new HashMap<>();
+            List<Mechanic> allMechanics = mechanicDao.getAll();
+            model.put("mechanics", allMechanics);
+            String newName = req.queryParams("name");
+            String charges = req.queryParams("charges");
+            int clientId = Integer.parseInt(req.queryParams("clientId"));
+            Mechanic newMechanic = new Mechanic(newName,charges, clientId);        //See what we did with the hard coded categoryId?
+            mechanicDao.add(newMechanic);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
     }
 }

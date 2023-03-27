@@ -98,13 +98,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
         //get: show a form to update a category
 
-        get("/teachers/:id/edit", (req, res) -> {
+        get("/services/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("editTeacher", true);
-            Teacher teacher = teacherDao.findById(Integer.parseInt(req.params("id")));
-            model.put("teacher", teacher);
-            model.put("teachers", teacherDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "teacher-form.hbs");
+            model.put("editService", true);
+            Service service = serviceDao.findById(Integer.parseInt(req.params("id")));
+            model.put("service", service);
+            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "service-form.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }

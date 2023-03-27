@@ -96,18 +96,6 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        get("/services/:service_id/clients/:client_id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfClientToFind = Integer.parseInt(req.params("client_id")); //pull id - must match route segment
-            Client foundClient = clientDao.findById(idOfClientToFind); //use it to find task
-            int idOfServiceToFind = Integer.parseInt(req.params("service_id"));
-            Service foundService = serviceDao.findById(idOfServiceToFind);
-            model.put("service", foundService);
-            model.put("client", foundClient); //add it to model for template to display
-            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
-            return new ModelAndView(model, "client-detail.hbs"); //individual task page.
-        }, new HandlebarsTemplateEngine());
-
 
         get("/clients/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -138,6 +126,46 @@ public class App {
             model.put("client", foundClient); //add it to model for template to display
             model.put("clients", clientDao.getAll()); //refresh list of links for navbar
             return new ModelAndView(model, "client-detail.hbs"); //individual task page.
+        }, new HandlebarsTemplateEngine());
+
+        get("/services/:service_id/clients/:client_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfClientToFind = Integer.parseInt(req.params("client_id")); //pull id - must match route segment
+            Client foundClient = clientDao.findById(idOfClientToFind); //use it to find task
+            int idOfServiceToFind = Integer.parseInt(req.params("service_id"));
+            Service foundService = serviceDao.findById(idOfServiceToFind);
+            model.put("service", foundService);
+            model.put("client", foundClient); //add it to model for template to display
+            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "client-detail.hbs"); //individual task page.
+        }, new HandlebarsTemplateEngine());
+
+        //get: show a form to update a viral test
+
+        get("/clients/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Service> allServices = serviceDao.getAll();
+            model.put("services", allServices);
+            Client client = clientDao.findById(Integer.parseInt(req.params("id")));
+            model.put("client", client);
+            model.put("editClient", true);
+            return new ModelAndView(model, "patient-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //task: process a form to update a test
+        post("/patients/:id", (req, res) -> { //URL to update task on POST route
+            Map<String, Object> model = new HashMap<>();
+            int patientToEditId = Integer.parseInt(req.params("id"));
+            String name = req.queryParams("name");
+            String nationalId = req.queryParams("nationalId");
+            String dateTreated = req.queryParams("dateTreated");
+            String infection = req.queryParams("infection");
+            String tel = req.queryParams("tel");
+            String amount = req.queryParams("amount");
+            int newOfficerId = Integer.parseInt(req.queryParams("officerId"));
+            patientDao.update(patientToEditId,name,nationalId,dateTreated,infection,tel,amount,newOfficerId);  // remember the hardcoded categoryId we placed? See what we've done to/with it?
+            res.redirect("/");
+            return null;
         }, new HandlebarsTemplateEngine());
     }
 }

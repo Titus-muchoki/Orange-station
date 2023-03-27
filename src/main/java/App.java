@@ -149,21 +149,19 @@ public class App {
             Client client = clientDao.findById(Integer.parseInt(req.params("id")));
             model.put("client", client);
             model.put("editClient", true);
-            return new ModelAndView(model, "patient-form.hbs");
+            return new ModelAndView(model, "client-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //task: process a form to update a test
-        post("/patients/:id", (req, res) -> { //URL to update task on POST route
+        post("/clients/:id", (req, res) -> { //URL to update task on POST route
             Map<String, Object> model = new HashMap<>();
-            int patientToEditId = Integer.parseInt(req.params("id"));
-            String name = req.queryParams("name");
-            String nationalId = req.queryParams("nationalId");
-            String dateTreated = req.queryParams("dateTreated");
-            String infection = req.queryParams("infection");
-            String tel = req.queryParams("tel");
-            String amount = req.queryParams("amount");
-            int newOfficerId = Integer.parseInt(req.queryParams("officerId"));
-            patientDao.update(patientToEditId,name,nationalId,dateTreated,infection,tel,amount,newOfficerId);  // remember the hardcoded categoryId we placed? See what we've done to/with it?
+            int clientToEditId = Integer.parseInt(req.params("id"));
+            String newName = req.queryParams("name");
+            String newEmail = req.queryParams("email");
+            String newTel = req.queryParams("tel");
+            String newCar = req.queryParams("car");
+            int newserviceId = Integer.parseInt(req.queryParams("serviceId"));
+            clientDao.update(clientToEditId,newName,newEmail,newTel,newCar,newserviceId);  // remember the hardcoded categoryId we placed? See what we've done to/with it?
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

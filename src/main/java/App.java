@@ -77,6 +77,25 @@ public class App {
             return new ModelAndView(model, "service-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/services/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfServicesToEdit = Integer.parseInt(req.params("id"));
+            String newName = req.queryParams("newServiceName");
+            serviceDao.update(idOfServicesToEdit, newName);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+//        //get: delete an individual viral test
+
+        get("/services/:service_id/clients/:client_id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfClientToDelete = Integer.parseInt(req.params("client_id"));
+            clientDao.deleteById(idOfClientToDelete);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
 
         get("/clients/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

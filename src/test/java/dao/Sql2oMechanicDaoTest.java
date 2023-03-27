@@ -1,11 +1,16 @@
 package dao;
 
+import models.Client;
+import models.Mechanic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oMechanicDaoTest {
     private Connection conn;
@@ -29,5 +34,18 @@ public class Sql2oMechanicDaoTest {
     public static void shutDown() throws Exception{
         System.out.println("closing database");
     }
-
+    @Test
+    public void setMechanicsIdSetsIdCorrectly()throws Exception{
+        Mechanic mechanic = setupMechanic();
+        assertNotEquals(1, mechanic.getId());
+    }
+    //HELPERS
+    public Mechanic setupMechanic(){
+        return new Mechanic("joy","200",1);
+    }
+    public Client setupClient() throws Exception{
+        Client client = new Client("kajela","titoyut56@gmail.com","0717553340","x6",1);
+        clientDao.add(client);
+        return client;
+    }
 }

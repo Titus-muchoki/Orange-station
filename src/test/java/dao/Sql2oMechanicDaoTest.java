@@ -48,6 +48,15 @@ public class Sql2oMechanicDaoTest {
     public void noMechanicsReturnsEmptyList() throws Exception{
         assertEquals(0, mechanicDao.getAll().size());
     }
+    @Test
+    public void getMechanicByIdFindsTheCorrectMechanic()throws Exception{
+        Mechanic mechanic = setupMechanic();
+        Mechanic otherMechanic = setupMechanic();
+        mechanicDao.findById(mechanic.getId());
+        mechanicDao.findById(otherMechanic.getId());
+        assertNotEquals(mechanic, mechanicDao.getAll().size());
+        assertNotEquals(otherMechanic, mechanicDao.getAll().size());
+    }
     //HELPERS
     public Mechanic setupMechanic(){
         return new Mechanic("joy","200",1);

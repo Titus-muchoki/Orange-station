@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-27T16:23:51" hostname="kajela-HP-EliteBook-840-G3" time="0.61">
+<testsuite name="dao.Sql2oClientDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-27T16:24:44" hostname="kajela-HP-EliteBook-840-G3" time="0.579">
   <properties/>
-  <testcase name="updateClientUpdatesAllField" classname="dao.Sql2oClientDaoTest" time="0.61"/>
+  <testcase name="updateClientUpdatesAllField" classname="dao.Sql2oClientDaoTest" time="0.579"/>
   <system-out><![CDATA[clearing database
 closing database
 ]]></system-out>

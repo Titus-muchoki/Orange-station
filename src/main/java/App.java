@@ -96,6 +96,18 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        get("/services/:service_id/clients/:client_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfClientToFind = Integer.parseInt(req.params("client_id")); //pull id - must match route segment
+            Client foundClient = clientDao.findById(idOfClientToFind); //use it to find task
+            int idOfServiceToFind = Integer.parseInt(req.params("service_id"));
+            Service foundService = serviceDao.findById(idOfServiceToFind);
+            model.put("service", foundService);
+            model.put("client", foundClient); //add it to model for template to display
+            model.put("services", serviceDao.getAll()); //refresh list of links for navbar
+            return new ModelAndView(model, "client-detail.hbs"); //individual task page.
+        }, new HandlebarsTemplateEngine());
+
 
         get("/clients/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

@@ -35,7 +35,7 @@ public class Sql2oClientDaoTest {
     @Test
     public void addingClientsSetsId() throws Exception{
         Client client = setupClient();
-        assertEquals(0, client.getId());
+        assertNotEquals(0, client.getId());
 
     }
     @Test

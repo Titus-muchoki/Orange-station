@@ -29,18 +29,15 @@
     </li>
     <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Units  Menu <span class="caret"></span>
+            mechanics  Menu <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            {{#if units}}
-                {{#each units}}
-                    <li><a href="/units/{{id}}">{{math}}<br>
-                        {{english}}<br>
-                        {{kiswahili}}<br>
-                        {{science}}<br>
-                        {{socialStudy}}<br>
-                        {{cre}}<br>
-                        {{studentId}}
+            {{#if mechanics}}
+                {{#each mechanics}}
+                    <li><a href="/mechanics/{{id}}">{{name}}<br>
+                        {{charges}}<br>
+                        {{clientId}}
+
                     </a></li>
                 {{/each}}
                 <!--                <li><a href="/units/new">Add a unit</a></li>-->
@@ -86,12 +83,10 @@
         <div class="container">
             <hr>
             <h3 class="card-title">ABOUT</h3>
-            <P id="p1">Kindiga primary school is located in kiambu County in Githunguri constituency
-                it hast been ranked the best for the last ten years KCPE examination results in the constituency <br>
-                we just dont teach student we make sure they are able to apply the knowldege <br>
-                in their day to day life. <br>
-                This is what differentiate our student who study at Kingiga primary <br>
-                from other students </P>
+            <P id="p1"> As an automotive repair center, Orange station Garage is a regional car repair service provider specialist,<br>
+                with its core expertise being dealing in both mechanical and bodywork repair of large and small automobiles. <br>
+                Their bodywork repairs include services like paintwork repairs to scratches,<br>
+                scuffs and dents, as well as repairs to the bodies of vehicles damaged by collisions.</P>
         </div>
     </footer>
     </body>

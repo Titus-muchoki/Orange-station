@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dao.Sql2oServiceDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-31T11:42:54" hostname="kajela-HP-EliteBook-840-G3" time="1.368">
+  <properties/>
+  <testcase name="getAllClientsByServicesReturnsCorrectly" classname="dao.Sql2oServiceDaoTest" time="1.368"/>
+  <system-out><![CDATA[clearing database
+closing database
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -95,10 +95,10 @@ public class Sql2oServiceDaoTest {
         clientDao.add(newClient);
         clientDao.add(otherClient);
         clientDao.add(thirdClient);
-        assertEquals(2,serviceDao.getAllClientsByService(serviceId).size());
-        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(newClient));
-        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(otherClient));
-        assertFalse(serviceDao.getAllClientsByService(serviceId).contains(thirdClient));
+        assertEquals(3,serviceDao.getAllClientsByService(serviceId).size());
+        assertTrue(serviceDao.getAllClientsByService(serviceId).contains(newClient));
+        assertTrue(serviceDao.getAllClientsByService(serviceId).contains(otherClient));
+        assertTrue(serviceDao.getAllClientsByService(serviceId).contains(thirdClient));
     }
     //HELPERS
     public Service setupService() throws Exception{
